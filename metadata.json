@@ -1,0 +1,5 @@
+{
+  "name": "Dtracker",
+  "description": "A comprehensive equipment tracking and management dashboard featuring expiration alerts, status monitoring, and inventory management.",
+  "requestFramePermissions": []
+}
