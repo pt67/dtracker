@@ -14,7 +14,7 @@ const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose, equipment }) => {
   // Generate QR code URL using a public API for demonstration
   // In a real app, use a library like 'qrcode.react'
   const qrData = JSON.stringify({
-    id: equipment.id,
+    id: equipment.empId,
     sn: equipment.serialNumber,
     assignedTo: equipment.assigneeName
   });
