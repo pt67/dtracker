@@ -11,15 +11,6 @@ interface QrModalProps {
 const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose, equipment }) => {
   if (!isOpen || !equipment) return null;
 
-  // Generate QR code URL using a public API for demonstration
-  // In a real app, use a library like 'qrcode.react'
-  const qrData = JSON.stringify({
-    id: equipment.empId,
-    sn: equipment.serialNumber,
-    assignedTo: equipment.assigneeName
-  });
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
-
   // Safe date calculation
   let daysRemaining = 0;
   let dateValid = false;
@@ -30,6 +21,20 @@ const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose, equipment }) => {
         daysRemaining = Math.ceil((d.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
      }
   }
+
+  // Generate QR code data with User Information as requested
+  const qrData = JSON.stringify({
+    empId: equipment.empId || 'N/A',
+    name: equipment.assigneeName || 'N/A',
+    location: equipment.location || 'N/A',
+    remarks: equipment.remarks || '',
+    issueDate: equipment.issueDate ? new Date(equipment.issueDate).toLocaleDateString() : 'N/A',
+    dueDate: equipment.dueDate ? new Date(equipment.dueDate).toLocaleDateString() : 'N/A',
+    validityDays: dateValid ? daysRemaining : 'N/A',
+    serialNumber: equipment.serialNumber // Keeping serial for reference
+  });
+
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">

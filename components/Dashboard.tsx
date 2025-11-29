@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Equipment, EquipmentStatus} from '../types';
+import { Equipment, EquipmentStatus, EquipmentType } from '../types';
 import StatsCard from './StatsCard';
 import { 
   PieChart, 
@@ -64,7 +64,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data, onNavigate }) => {
     };
   }, [data]);
 
-  const chartData: { name: string; value: number }[] = Object.entries(stats.byType).map(([name, value]) => ({ name, value }));
+  const chartData: { name: string; value: number }[] = Object.entries(stats.byType).map(([name, value]) => ({ name, value: value as number }));
 
   const handleSendAlarm = (e: React.MouseEvent) => {
     e.stopPropagation();

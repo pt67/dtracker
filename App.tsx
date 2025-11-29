@@ -44,6 +44,19 @@ const App: React.FC = () => {
                 <p className="text-xs text-slate-500">Equipment Management System</p>
               </div>
             </div>
+
+            <div className="flex items-center gap-6">
+              {/* data example for download */}
+              <div className="hidden md:flex flex-col ml-auto text-right">
+                <a 
+                  href="./csvjson.json" 
+                  className="text-sm text-blue-600 hover:underline"
+                >
+                  Download Sample Data
+                </a>
+              </div>
+            </div>
+
             
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
