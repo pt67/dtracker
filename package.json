@@ -4,13 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node api.js && vite",
+    "build": "node api.js && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.15.1",
     "lucide-react": "^0.555.0",
+    "node-fetch": "^3.3.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "recharts": "^3.5.1"
